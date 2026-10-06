@@ -1,0 +1,152 @@
+
+f1      system_auth         system_schema  system_views           velib
+system  system_distributed  system_traces  system_virtual_schema
+
+
+drivers_by_session       pit_stops_by_session  results_by_session
+fastest_laps_by_session  races_by_year         stints_by_driver  
+laps_by_driver           results_by_driver   
+
+
+CREATE TABLE f1.results_by_session (
+    session_key int,
+    position int,
+    driver_number int,
+    full_name text,
+    gap_to_leader text,
+    number_of_laps int,
+    points double,
+    status text,
+    team_name text,
+    PRIMARY KEY (session_key, position, driver_number)
+) WITH CLUSTERING ORDER BY (position ASC, driver_number ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+ count
+-------
+    24
+
+(1 rows)
+
+ count
+-------
+    20
+
+(1 rows)
+
+ driver_number | name_acronym | full_name        | team_name
+---------------+--------------+------------------+-----------------
+             1 |          VER |   Max VERSTAPPEN | Red Bull Racing
+             2 |          SAR |   Logan SARGEANT |        Williams
+             3 |          RIC | Daniel RICCIARDO |              RB
+             4 |          NOR |     Lando NORRIS |         McLaren
+            10 |          GAS |     Pierre GASLY |          Alpine
+            11 |          PER |     Sergio PEREZ | Red Bull Racing
+            14 |          ALO |  Fernando ALONSO |    Aston Martin
+            16 |          LEC |  Charles LECLERC |         Ferrari
+            18 |          STR |     Lance STROLL |    Aston Martin
+            20 |          MAG |  Kevin MAGNUSSEN |    Haas F1 Team
+            22 |          TSU |     Yuki TSUNODA |              RB
+            23 |          ALB |  Alexander ALBON |        Williams
+            24 |          ZHO |      ZHOU Guanyu |     Kick Sauber
+            27 |          HUL |  Nico HULKENBERG |    Haas F1 Team
+            31 |          OCO |     Esteban OCON |          Alpine
+            44 |          HAM |   Lewis HAMILTON |        Mercedes
+            55 |          SAI |     Carlos SAINZ |         Ferrari
+            63 |          RUS |   George RUSSELL |        Mercedes
+            77 |          BOT |  Valtteri BOTTAS |     Kick Sauber
+            81 |          PIA |    Oscar PIASTRI |         McLaren
+
+(20 rows)
+
+ count
+-------
+    57
+
+(1 rows)
+
+ year | date_start                      | session_key | circuit   | country_name | location  | meeting_key
+------+---------------------------------+-------------+-----------+--------------+-----------+-------------
+ 2024 | 2024-03-02 15:00:00.000000+0000 |        9472 |    Sakhir |      Bahrain |    Sakhir |        1229
+ 2024 | 2024-03-09 17:00:00.000000+0000 |        9480 |    Jeddah | Saudi Arabia |    Jeddah |        1230
+ 2024 | 2024-03-24 04:00:00.000000+0000 |        9488 | Melbourne |    Australia | Melbourne |        1231
+ 2024 | 2024-04-07 05:00:00.000000+0000 |        9496 |    Suzuka |        Japan |    Suzuka |        1232
+ 2024 | 2024-04-21 07:00:00.000000+0000 |        9673 |  Shanghai |        China |  Shanghai |        1233
+
+(5 rows)
+
+ session_key | position | driver_number | full_name       | gap_to_leader | number_of_laps | points | status   | team_name
+-------------+----------+---------------+-----------------+---------------+----------------+--------+----------+-----------------
+        9488 |        1 |            55 |    Carlos SAINZ |             0 |             58 |     25 | FINISHED |         Ferrari
+        9488 |        2 |            16 | Charles LECLERC |         2.366 |             58 |     19 | FINISHED |         Ferrari
+        9488 |        3 |             4 |    Lando NORRIS |         5.904 |             58 |     15 | FINISHED |         McLaren
+        9488 |        4 |            81 |   Oscar PIASTRI |         35.77 |             58 |     12 | FINISHED |         McLaren
+        9488 |        5 |            11 |    Sergio PEREZ |        56.309 |             58 |     10 | FINISHED | Red Bull Racing
+
+(5 rows)
+
+ driver_number | year | date_start                      | session_key | full_name        | location   | points | position | status   | team_name
+---------------+------+---------------------------------+-------------+------------------+------------+--------+----------+----------+-----------
+            61 | 2024 | 2024-12-08 13:00:00.000000+0000 |        9662 |      Jack DOOHAN | Yas Island |      0 |       15 | FINISHED |    Alpine
+            38 | 2024 | 2024-03-09 17:00:00.000000+0000 |        9480 |   Oliver BEARMAN |     Jeddah |      6 |        7 | FINISHED |   Ferrari
+             3 | 2024 | 2024-03-02 15:00:00.000000+0000 |        9472 | Daniel RICCIARDO |     Sakhir |      0 |       13 | FINISHED |        RB
+             3 | 2024 | 2024-03-09 17:00:00.000000+0000 |        9480 | Daniel RICCIARDO |     Jeddah |      0 |       16 | FINISHED |        RB
+             3 | 2024 | 2024-03-24 04:00:00.000000+0000 |        9488 | Daniel RICCIARDO |  Melbourne |      0 |       12 | FINISHED |        RB
+
+(5 rows)
+
+ session_key | driver_number | lap_number | duration_sector_1 | duration_sector_2 | duration_sector_3 | is_pit_out_lap | lap_duration | st_speed
+-------------+---------------+------------+-------------------+-------------------+-------------------+----------------+--------------+----------
+        9496 |             4 |          1 |            37.294 |            65.666 |            32.333 |          False |      135.293 |      179
+        9496 |             4 |          2 |              null |             57.89 |            39.001 |           True |      1710.61 |      226
+        9496 |             4 |          3 |              null |            43.152 |            18.525 |          False |      171.325 |      293
+        9496 |             4 |          4 |            35.062 |            43.181 |             18.61 |          False |       96.853 |      294
+        9496 |             4 |          5 |            34.856 |            43.348 |            18.656 |          False |        96.86 |      296
+
+(5 rows)
+
+ session_key | lap_duration | driver_number | lap_number | name_acronym | team_name
+-------------+--------------+---------------+------------+--------------+-----------
+        9488 |       79.813 |            16 |         56 |          LEC |   Ferrari
+        9488 |       79.915 |             4 |         49 |          NOR |   McLaren
+        9488 |       79.925 |            16 |         50 |          LEC |   Ferrari
+        9488 |       79.959 |             4 |         52 |          NOR |   McLaren
+        9488 |       79.971 |             4 |         46 |          NOR |   McLaren
+
+(5 rows)
+
+ session_key | lap_number | driver_number | date                            | name_acronym | pit_duration
+-------------+------------+---------------+---------------------------------+--------------+--------------
+        9488 |          5 |             3 | 2024-03-24 04:10:44.051000+0000 |          RIC |         18.2
+        9488 |          6 |            23 | 2024-03-24 04:12:03.960000+0000 |          ALB |         17.7
+        9488 |          6 |            24 | 2024-03-24 04:12:08.895000+0000 |          ZHO |           19
+        9488 |          7 |            20 | 2024-03-24 04:13:27.578000+0000 |          MAG |         18.3
+        9488 |          7 |            44 | 2024-03-24 04:13:22.694000+0000 |          HAM |         17.5
+
+(5 rows)
+
+ session_key | driver_number | stint_number | compound | lap_end | lap_start | tyre_age_at_start
+-------------+---------------+--------------+----------+---------+-----------+-------------------
+        9496 |             4 |            1 |   MEDIUM |       1 |         1 |                 0
+        9496 |             4 |            2 |   MEDIUM |      11 |         2 |                 0
+        9496 |             4 |            3 |     HARD |      26 |        12 |                 0
+        9496 |             4 |            4 |     HARD |      53 |        27 |                 0
+        9558 |            77 |            1 |   MEDIUM |      26 |         1 |                 0
+
+(5 rows)

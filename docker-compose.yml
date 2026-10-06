@@ -1,0 +1,25 @@
+services:
+
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    hostname: cassandra
+
+    ports:
+      - "9042:9042"
+
+    environment:
+      CASSANDRA_CLUSTER_NAME: tp-cassandra
+      CASSANDRA_DC: dc1
+      CASSANDRA_RACK: rack1
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+      CASSANDRA_NUM_TOKENS: 16
+
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 128M
+
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+
+volumes:
+  cassandra_data:

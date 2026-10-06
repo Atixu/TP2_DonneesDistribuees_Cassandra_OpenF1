@@ -1,0 +1,155 @@
+
+ date_start                      | session_key | country_name         | location          | circuit
+---------------------------------+-------------+----------------------+-------------------+--------------------
+ 2024-03-02 15:00:00.000000+0000 |        9472 |              Bahrain |            Sakhir |             Sakhir
+ 2024-03-09 17:00:00.000000+0000 |        9480 |         Saudi Arabia |            Jeddah |             Jeddah
+ 2024-03-24 04:00:00.000000+0000 |        9488 |            Australia |         Melbourne |          Melbourne
+ 2024-04-07 05:00:00.000000+0000 |        9496 |                Japan |            Suzuka |             Suzuka
+ 2024-04-21 07:00:00.000000+0000 |        9673 |                China |          Shanghai |           Shanghai
+ 2024-05-05 20:00:00.000000+0000 |        9507 |        United States |             Miami |              Miami
+ 2024-05-19 13:00:00.000000+0000 |        9515 |                Italy |             Imola |              Imola
+ 2024-05-26 13:00:00.000000+0000 |        9523 |               Monaco |            Monaco |        Monte Carlo
+ 2024-06-09 18:00:00.000000+0000 |        9531 |               Canada |          Montréal |           Montreal
+ 2024-06-23 13:00:00.000000+0000 |        9539 |                Spain |         Barcelona |          Catalunya
+ 2024-06-30 13:00:00.000000+0000 |        9550 |              Austria |         Spielberg |          Spielberg
+ 2024-07-07 14:00:00.000000+0000 |        9558 |       United Kingdom |       Silverstone |        Silverstone
+ 2024-07-21 13:00:00.000000+0000 |        9566 |              Hungary |          Budapest |        Hungaroring
+ 2024-07-28 13:00:00.000000+0000 |        9574 |              Belgium | Spa-Francorchamps |  Spa-Francorchamps
+ 2024-08-25 13:00:00.000000+0000 |        9582 |          Netherlands |         Zandvoort |          Zandvoort
+ 2024-09-01 13:00:00.000000+0000 |        9590 |                Italy |             Monza |              Monza
+ 2024-09-15 11:00:00.000000+0000 |        9598 |           Azerbaijan |              Baku |               Baku
+ 2024-09-22 12:00:00.000000+0000 |        9606 |            Singapore |        Marina Bay |          Singapore
+ 2024-10-20 19:00:00.000000+0000 |        9617 |        United States |            Austin |             Austin
+ 2024-10-27 20:00:00.000000+0000 |        9625 |               Mexico |       Mexico City |        Mexico City
+ 2024-11-03 15:30:00.000000+0000 |        9636 |               Brazil |         São Paulo |         Interlagos
+ 2024-11-24 06:00:00.000000+0000 |        9644 |        United States |         Las Vegas |          Las Vegas
+ 2024-12-01 16:00:00.000000+0000 |        9655 |                Qatar |            Lusail |             Lusail
+ 2024-12-08 13:00:00.000000+0000 |        9662 | United Arab Emirates |        Yas Island | Yas Marina Circuit
+
+(24 rows)
+
+ position | full_name      | team_name       | points | gap_to_leader
+----------+----------------+-----------------+--------+---------------
+        1 | Max VERSTAPPEN | Red Bull Racing |     26 |             0
+        2 |   Sergio PEREZ | Red Bull Racing |     18 |        22.457
+        3 |   Carlos SAINZ |         Ferrari |     15 |         25.11
+
+(3 rows)
+
+ position | full_name       | team_name       | number_of_laps | status
+----------+-----------------+-----------------+----------------+--------
+      116 |    Esteban OCON |          Alpine |              0 |    DNF
+      117 |    Sergio PEREZ | Red Bull Racing |              0 |    DNF
+      118 | Nico HULKENBERG |    Haas F1 Team |              0 |    DNF
+      119 | Kevin MAGNUSSEN |    Haas F1 Team |              0 |    DNF
+
+(4 rows)
+
+ date_start                      | location          | position | points | status
+---------------------------------+-------------------+----------+--------+----------
+ 2024-03-02 15:00:00.000000+0000 |            Sakhir |        1 |     26 | FINISHED
+ 2024-03-09 17:00:00.000000+0000 |            Jeddah |        1 |     25 | FINISHED
+ 2024-03-24 04:00:00.000000+0000 |         Melbourne |      118 |      0 |      DNF
+ 2024-04-07 05:00:00.000000+0000 |            Suzuka |        1 |     26 | FINISHED
+ 2024-04-21 07:00:00.000000+0000 |          Shanghai |        1 |     25 | FINISHED
+ 2024-05-05 20:00:00.000000+0000 |             Miami |        2 |     18 | FINISHED
+ 2024-05-19 13:00:00.000000+0000 |             Imola |        1 |     25 | FINISHED
+ 2024-05-26 13:00:00.000000+0000 |            Monaco |        6 |      8 | FINISHED
+ 2024-06-09 18:00:00.000000+0000 |          Montréal |        1 |     25 | FINISHED
+ 2024-06-23 13:00:00.000000+0000 |         Barcelona |        1 |     25 | FINISHED
+ 2024-06-30 13:00:00.000000+0000 |         Spielberg |        5 |     10 | FINISHED
+ 2024-07-07 14:00:00.000000+0000 |       Silverstone |        2 |     18 | FINISHED
+ 2024-07-21 13:00:00.000000+0000 |          Budapest |        5 |     10 | FINISHED
+ 2024-07-28 13:00:00.000000+0000 | Spa-Francorchamps |        4 |     12 | FINISHED
+ 2024-08-25 13:00:00.000000+0000 |         Zandvoort |        2 |     18 | FINISHED
+ 2024-09-01 13:00:00.000000+0000 |             Monza |        6 |      8 | FINISHED
+ 2024-09-15 11:00:00.000000+0000 |              Baku |        5 |     10 | FINISHED
+ 2024-09-22 12:00:00.000000+0000 |        Marina Bay |        2 |     18 | FINISHED
+ 2024-10-20 19:00:00.000000+0000 |            Austin |        3 |     15 | FINISHED
+ 2024-10-27 20:00:00.000000+0000 |       Mexico City |        6 |      8 | FINISHED
+ 2024-11-03 15:30:00.000000+0000 |         São Paulo |        1 |     26 | FINISHED
+ 2024-11-24 06:00:00.000000+0000 |         Las Vegas |        5 |     10 | FINISHED
+ 2024-12-01 16:00:00.000000+0000 |            Lusail |        1 |     25 | FINISHED
+ 2024-12-08 13:00:00.000000+0000 |        Yas Island |        6 |      8 | FINISHED
+
+(24 rows)
+
+ full_name      | total_points | nb_courses
+----------------+--------------+------------
+ Max VERSTAPPEN |          399 |         24
+
+(1 rows)
+
+ lap_duration | name_acronym | team_name       | lap_number
+--------------+--------------+-----------------+------------
+       81.432 |          NOR |         McLaren |         53
+       81.512 |          HAM |        Mercedes |         53
+       81.745 |          VER | Red Bull Racing |         43
+       81.824 |          NOR |         McLaren |         48
+       81.943 |          PIA |         McLaren |         53
+       81.948 |          PIA |         McLaren |         52
+       82.036 |          RUS |        Mercedes |         49
+       82.041 |          NOR |         McLaren |         46
+       82.066 |          PIA |         McLaren |         41
+       82.092 |          PIA |         McLaren |         43
+
+(10 rows)
+
+ lap_number | lap_duration | duration_sector_1 | duration_sector_2 | duration_sector_3 | st_speed
+------------+--------------+-------------------+-------------------+-------------------+----------
+         10 |       84.432 |            27.515 |             28.84 |            28.077 |      334
+         11 |       84.846 |            27.633 |            28.951 |            28.262 |      323
+         12 |       84.916 |             27.68 |            28.971 |            28.265 |      321
+         13 |       85.529 |            27.812 |            29.177 |             28.54 |     null
+         14 |       85.606 |            27.839 |            29.217 |             28.55 |      320
+         15 |       90.192 |            28.034 |            29.361 |            32.797 |      318
+         16 |      104.888 |            47.985 |             28.75 |            28.153 |      284
+         17 |        84.27 |            27.458 |             28.73 |            28.082 |      322
+         18 |       83.875 |            27.408 |            28.571 |            27.896 |      329
+         19 |       84.203 |            27.354 |            28.722 |            28.127 |      336
+         20 |       83.826 |            27.483 |            28.623 |             27.72 |      325
+
+(11 rows)
+
+ lap_number | name_acronym | pit_duration
+------------+--------------+--------------
+          5 |          HUL |         38.8
+         10 |          GAS |         24.3
+         11 |          RIC |         30.3
+         11 |          RUS |         32.6
+         12 |          ALO |         24.8
+         14 |          NOR |         24.1
+         14 |          MAG |         25.6
+         15 |          LEC |         24.5
+         15 |          ZHO |         27.1
+         15 |          HAM |         24.4
+         16 |          COL |         25.1
+         16 |          PIA |         23.7
+         17 |          ALB |         24.8
+         19 |          STR |         24.9
+         19 |          SAI |         24.3
+         22 |          VER |         28.1
+         23 |          PER |         24.7
+         30 |          GAS |         24.2
+         31 |          OCO |         24.1
+         32 |          NOR |         24.8
+         32 |          HUL |         36.5
+         33 |          RUS |         26.2
+         33 |          BOT |         24.4
+         35 |          PER |           24
+         35 |          ALO |         24.5
+         36 |          STR |         24.2
+         37 |          HAM |         24.1
+         38 |          PIA |         24.6
+         41 |          VER |         24.1
+         50 |          STR |         25.2
+
+(30 rows)
+
+ stint_number | compound | lap_start | lap_end | tyre_age_at_start
+--------------+----------+-----------+---------+-------------------
+            1 |   MEDIUM |         1 |      14 |                 0
+            2 |     HARD |        15 |      32 |                 0
+            3 |     HARD |        33 |      53 |                 0
+
+(3 rows)
