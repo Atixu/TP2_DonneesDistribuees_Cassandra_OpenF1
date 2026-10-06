@@ -1,0 +1,19 @@
+$ docker compose -p tp-cassandra-velib up -d --no-recreate
+ Container cassandra Running 
+
+$ docker compose -p tp-cassandra-velib ps
+NAME        IMAGE           COMMAND                  SERVICE     CREATED       STATUS       PORTS
+cassandra   cassandra:4.1   "docker-entrypoint.s…"   cassandra   5 hours ago   Up 5 hours   0.0.0.0:9042->9042/tcp, [::]:9042->9042/tcp
+
+$ docker logs cassandra 2>&1 | grep -E "Starting listening for CQL|state jump to NORMAL"
+INFO  [main] 2026-10-06 08:26:10,941 StorageService.java:3111 - Node /172.22.0.2:7000 state jump to NORMAL
+INFO  [main] 2026-10-06 08:26:18,994 PipelineConfigurator.java:146 - Starting listening for CQL clients on /0.0.0.0:9042 (unencrypted)...
+
+$ docker exec cassandra nodetool status
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.22.0.2  182.3 KiB  16      100.0%            14867960-e18f-446b-8b02-8dd955e9b181  rack1
+

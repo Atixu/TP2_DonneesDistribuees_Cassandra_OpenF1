@@ -76,6 +76,8 @@ TP-Cassandra-OpenF1/
 ```bash
 # 1. Démarrer Cassandra
 docker compose up -d
+# (si le conteneur "cassandra" du TP Vélib existe déjà, le réutiliser :
+#  docker compose -p tp-cassandra-velib up -d --no-recreate)
 docker exec cassandra nodetool status        # attendre l'état UN
 
 # 2. Installer les dépendances Python
@@ -96,7 +98,8 @@ Le script `getapi.py` exécute lui-même `schema.cql` (`CREATE ... IF NOT EXISTS
 
 Les journaux d'exécution du terminal (commandes + résultats) sont dans [captures/](captures/) :
 
-- [00_etat_cassandra.log](captures/00_etat_cassandra.log) — conteneur, `nodetool status` (nœud `UN`), version
+- [00_demarrage_cassandra.log](captures/00_demarrage_cassandra.log) — `docker compose up -d`, logs de démarrage, `nodetool status` (nœud `UN`)
+- [00_etat_cassandra.log](captures/00_etat_cassandra.log) — `docker ps`, `nodetool status`, version
 - [01_import_openf1.log](captures/01_import_openf1.log) — exécution de `getapi.py` (24 courses importées)
 - [02_verification.log](captures/02_verification.log) — schéma et comptages (24 courses, 20 pilotes, 57 tours de VER à Bahreïn)
 - [03_crud.log](captures/03_crud.log) — INSERT / SELECT / UPDATE / DELETE
