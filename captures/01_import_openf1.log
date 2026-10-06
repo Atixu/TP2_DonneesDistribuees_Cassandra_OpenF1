@@ -1,0 +1,28 @@
+$ python3 script/getapi.py
+Récupération des courses 2024 depuis OpenF1...
+24 courses récupérées.
+Course importée : 9472 - Sakhir (20 pilotes, 20 résultats, 1129 tours, 43 pit stops, 63 relais)
+Course importée : 9480 - Jeddah (20 pilotes, 20 résultats, 902 tours, 19 pit stops, 39 relais)
+Course importée : 9488 - Melbourne (19 pilotes, 19 résultats, 998 tours, 36 pit stops, 55 relais)
+Course importée : 9496 - Suzuka (20 pilotes, 20 résultats, 908 tours, 54 pit stops, 74 relais)
+Course importée : 9673 - Shanghai (20 pilotes, 20 résultats, 1033 tours, 40 pit stops, 60 relais)
+Course importée : 9507 - Miami (20 pilotes, 20 résultats, 1112 tours, 28 pit stops, 48 relais)
+Course importée : 9515 - Imola (20 pilotes, 20 résultats, 1239 tours, 27 pit stops, 47 relais)
+Course importée : 9523 - Monaco (20 pilotes, 20 résultats, 1237 tours, 23 pit stops, 43 relais)
+Course importée : 9531 - Montréal (20 pilotes, 20 résultats, 1272 tours, 42 pit stops, 62 relais)
+Course importée : 9539 - Barcelona (20 pilotes, 20 résultats, 1310 tours, 42 pit stops, 62 relais)
+Course importée : 9550 - Spielberg (20 pilotes, 20 résultats, 1407 tours, 45 pit stops, 65 relais)
+Course importée : 9558 - Silverstone (20 pilotes, 20 résultats, 962 tours, 45 pit stops, 65 relais)
+Course importée : 9566 - Budapest (20 pilotes, 20 résultats, 1356 tours, 40 pit stops, 60 relais)
+Course importée : 9574 - Spa-Francorchamps (20 pilotes, 20 résultats, 842 tours, 34 pit stops, 58 relais)
+Course importée : 9582 - Zandvoort (20 pilotes, 20 résultats, 1426 tours, 26 pit stops, 46 relais)
+Course importée : 9590 - Monza (20 pilotes, 20 résultats, 1009 tours, 30 pit stops, 50 relais)
+Course importée : 9598 - Baku (20 pilotes, 20 résultats, 975 tours, 22 pit stops, 42 relais)
+Course importée : 9606 - Marina Bay (20 pilotes, 20 résultats, 1179 tours, 23 pit stops, 43 relais)
+Course importée : 9617 - Austin (20 pilotes, 20 résultats, 1059 tours, 23 pit stops, 43 relais)
+Course importée : 9625 - Mexico City (20 pilotes, 20 résultats, 1216 tours, 21 pit stops, 41 relais)
+Course importée : 9636 - São Paulo (20 pilotes, 20 résultats, 1137 tours, 35 pit stops, 54 relais)
+Course importée : 9644 - Las Vegas (20 pilotes, 20 résultats, 940 tours, 39 pit stops, 59 relais)
+Course importée : 9655 - Lusail (20 pilotes, 20 résultats, 944 tours, 60 pit stops, 82 relais)
+Course importée : 9662 - Yas Island (20 pilotes, 20 résultats, 1037 tours, 28 pit stops, 48 relais)
+Import terminé.

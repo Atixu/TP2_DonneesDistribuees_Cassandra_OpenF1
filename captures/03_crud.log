@@ -1,0 +1,95 @@
+$ docker exec -it cassandra cqlsh
+Connected to tp-cassandra at 127.0.0.1:9042
+[cqlsh 6.1.0 | Cassandra 4.1.12 | CQL spec 3.4.6 | Native protocol v5]
+Use HELP for help.
+
+cqlsh> -- 02 — Manipulation CRUD sur les données F1
+cqlsh> -- Exécution : docker exec -i cassandra cqlsh < queries/02_crud.sql
+cqlsh> USE f1;
+
+cqlsh:f1> -- ========== CREATE : ajout d'un pilote de réserve fictif au GP de Bahreïn ==========
+cqlsh:f1> INSERT INTO drivers_by_session (session_key, driver_number, full_name, name_acronym, team_name, country_code)
+      ... VALUES (9472, 99, 'Test DRIVER', 'TST', 'Équipe Test', 'FRA');
+
+
+cqlsh:f1> -- ========== READ : lecture du pilote ajouté (accès direct par la clé primaire) ==========
+cqlsh:f1> SELECT * FROM drivers_by_session
+      ... WHERE session_key = 9472 AND driver_number = 99;
+
+ session_key | driver_number | country_code | full_name   | name_acronym | team_name
+-------------+---------------+--------------+-------------+--------------+-------------
+        9472 |            99 |          FRA | Test DRIVER |          TST | Équipe Test
+
+(1 rows)
+
+cqlsh:f1> -- ========== UPDATE : le pilote change d'équipe ==========
+cqlsh:f1> UPDATE drivers_by_session
+      ... SET team_name = 'Alpine'
+      ... WHERE session_key = 9472 AND driver_number = 99;
+
+
+cqlsh:f1> SELECT * FROM drivers_by_session
+      ... WHERE session_key = 9472 AND driver_number = 99;
+
+ session_key | driver_number | country_code | full_name   | name_acronym | team_name
+-------------+---------------+--------------+-------------+--------------+-----------
+        9472 |            99 |          FRA | Test DRIVER |          TST |    Alpine
+
+(1 rows)
+
+cqlsh:f1> -- ========== CREATE / UPDATE sur un arrêt aux stands ==========
+cqlsh:f1> INSERT INTO pit_stops_by_session (session_key, lap_number, driver_number, name_acronym, pit_duration, date)
+      ... VALUES (9472, 30, 99, 'TST', 25.0, '2024-03-02 16:00:00+0000');
+
+
+cqlsh:f1> -- Correction de la durée de l'arrêt
+cqlsh:f1> UPDATE pit_stops_by_session
+      ... SET pit_duration = 23.4
+      ... WHERE session_key = 9472 AND lap_number = 30 AND driver_number = 99;
+
+
+cqlsh:f1> SELECT * FROM pit_stops_by_session
+      ... WHERE session_key = 9472 AND lap_number = 30;
+
+ session_key | lap_number | driver_number | date                            | name_acronym | pit_duration
+-------------+------------+---------------+---------------------------------+--------------+--------------
+        9472 |         30 |            31 | 2024-03-02 15:53:55.836000+0000 |          OCO |         25.1
+        9472 |         30 |            77 | 2024-03-02 15:54:47.631000+0000 |          BOT |         74.7
+        9472 |         30 |            99 | 2024-03-02 16:00:00.000000+0000 |          TST |         23.4
+
+(3 rows)
+
+cqlsh:f1> -- ========== DELETE : suppression d'une colonne puis des lignes ==========
+cqlsh:f1> DELETE pit_duration FROM pit_stops_by_session
+      ... WHERE session_key = 9472 AND lap_number = 30 AND driver_number = 99;
+
+
+cqlsh:f1> DELETE FROM pit_stops_by_session
+      ... WHERE session_key = 9472 AND lap_number = 30 AND driver_number = 99;
+
+
+cqlsh:f1> DELETE FROM drivers_by_session
+      ... WHERE session_key = 9472 AND driver_number = 99;
+
+
+cqlsh:f1> -- Vérification : les lignes ont disparu
+cqlsh:f1> SELECT * FROM drivers_by_session
+      ... WHERE session_key = 9472 AND driver_number = 99;
+
+ session_key | driver_number | country_code | full_name | name_acronym | team_name
+-------------+---------------+--------------+-----------+--------------+-----------
+
+
+(0 rows)
+
+cqlsh:f1> SELECT * FROM pit_stops_by_session
+      ... WHERE session_key = 9472 AND lap_number = 30;
+
+ session_key | lap_number | driver_number | date                            | name_acronym | pit_duration
+-------------+------------+---------------+---------------------------------+--------------+--------------
+        9472 |         30 |            31 | 2024-03-02 15:53:55.836000+0000 |          OCO |         25.1
+        9472 |         30 |            77 | 2024-03-02 15:54:47.631000+0000 |          BOT |         74.7
+
+(2 rows)
+
+cqlsh:f1> exit;

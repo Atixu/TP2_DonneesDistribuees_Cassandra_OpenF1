@@ -94,11 +94,15 @@ Le script `getapi.py` exécute lui-même `schema.cql` (`CREATE ... IF NOT EXISTS
 
 ## Captures
 
-Les sorties obtenues sont dans [captures/](captures/) :
+Les journaux d'exécution du terminal (commandes + résultats) sont dans [captures/](captures/) :
 
-- [01_verification.txt](captures/01_verification.txt) — schéma et comptages (24 courses, 20 pilotes, 57 tours de VER à Bahreïn)
-- [02_crud.txt](captures/02_crud.txt) — INSERT / UPDATE / DELETE
-- [03_requetes_metier.txt](captures/03_requetes_metier.txt) — les 7 requêtes métier
+- [00_etat_cassandra.log](captures/00_etat_cassandra.log) — conteneur, `nodetool status` (nœud `UN`), version
+- [01_import_openf1.log](captures/01_import_openf1.log) — exécution de `getapi.py` (24 courses importées)
+- [02_verification.log](captures/02_verification.log) — schéma et comptages (24 courses, 20 pilotes, 57 tours de VER à Bahreïn)
+- [03_crud.log](captures/03_crud.log) — INSERT / SELECT / UPDATE / DELETE
+- [04_requetes_metier.log](captures/04_requetes_metier.log) — les 7 requêtes métier dans cqlsh
+
+Les fichiers `.txt` contiennent les sorties brutes de `cqlsh < queries/xx.sql`.
 
 Extrait (REQ-02, podium de Bahreïn 2024) :
 

@@ -1,0 +1,15 @@
+$ docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED       STATUS       PORTS                                         NAMES
+c568101a3872   cassandra:4.1   "docker-entrypoint.s…"   5 hours ago   Up 5 hours   0.0.0.0:9042->9042/tcp, [::]:9042->9042/tcp   cassandra
+
+$ docker exec cassandra nodetool status
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.22.0.2  182.3 KiB  16      100.0%            14867960-e18f-446b-8b02-8dd955e9b181  rack1
+
+
+$ docker exec cassandra cqlsh -e "SHOW VERSION"
+[cqlsh 6.1.0 | Cassandra 4.1.12 | CQL spec 3.4.6 | Native protocol v5]
