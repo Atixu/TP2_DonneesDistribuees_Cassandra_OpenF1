@@ -17,7 +17,12 @@ PAUSE = 0.4
 def get(endpoint, **params):
     for attempt in range(8):
         time.sleep(PAUSE)
-        response = requests.get(f"{API_URL}/{endpoint}", params=params, timeout=60)
+        try:
+            response = requests.get(f"{API_URL}/{endpoint}", params=params, timeout=60)
+        except (requests.Timeout, requests.ConnectionError):
+            print(f"  API injoignable sur {endpoint}, nouvelle tentative...")
+            time.sleep(min(2 ** attempt, 60))
+            continue
         if response.status_code == 429:
             # Limite aussi appliquée par minute : on attend de plus en plus longtemps
             time.sleep(min(2 ** attempt, 60))
